@@ -91,15 +91,15 @@ File to import:
 
 Examples:
 
-![image](https://github.com/user-attachments/assets/3f845083-367b-46ea-be22-35b88c63d149)
+<img src="https://github.com/user-attachments/assets/3f845083-367b-46ea-be22-35b88c63d149" alt="image" width="640" />
 
-![image](https://github.com/user-attachments/assets/d292a687-f0de-45a6-9401-190021d71123)
+<img src="https://github.com/user-attachments/assets/d292a687-f0de-45a6-9401-190021d71123" alt="image" width="640" />
 
-![image](https://github.com/user-attachments/assets/2a29ec1a-c917-46b3-a84c-3f68bf15ed38)
+<img src="https://github.com/user-attachments/assets/2a29ec1a-c917-46b3-a84c-3f68bf15ed38" alt="image" width="640" />
 
-![image](https://github.com/user-attachments/assets/2ef363b3-f580-4bb8-a63b-52a0f6e86978)
+<img src="https://github.com/user-attachments/assets/2ef363b3-f580-4bb8-a63b-52a0f6e86978" alt="image" width="640" />
 
-![image](https://github.com/user-attachments/assets/c996b2a1-07b0-43bd-8002-5aa5b7df43a8)
+<img src="https://github.com/user-attachments/assets/c996b2a1-07b0-43bd-8002-5aa5b7df43a8" alt="image" width="640" />
 
 
 
