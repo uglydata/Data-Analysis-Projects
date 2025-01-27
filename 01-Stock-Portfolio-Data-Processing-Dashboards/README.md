@@ -31,7 +31,7 @@ Create a CSV file named `portfolio.csv` with the following columns:
 - `date`: The date of the portfolio record.
 - `ticker`: Stock ticker symbol (e.g., AAPL).
 - `shares`: Number of shares held.
-- `porftolio name`: name of the portfolio, offers possibility to process different portfolios
+- `portfolio name`: name of the portfolio, offers possibility to process different portfolios
 
 File:
 **0_portfolio_setup.csv**
