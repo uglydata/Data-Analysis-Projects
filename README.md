@@ -9,8 +9,7 @@ Data Analysis Projects - demo projects showcasing data processing from different
 - Power BI
 
 ## Stock Portfolio Dashboard
-[01-Stock-Portfolio-Data-Processing-Dashboards]
-(https://github.com/uglydata/Data-Analysis-Projects/tree/main/01-Stock-Portfolio-Data-Processing-Dashboards)
+[01-Stock-Portfolio-Data-Processing-Dashboards](https://github.com/uglydata/Data-Analysis-Projects/tree/main/01-Stock-Portfolio-Data-Processing-Dashboards)
 
 This project focuses on the following tasks:
 
