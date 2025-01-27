@@ -1,17 +1,17 @@
 # Data-Analysis-Projects
-Data Analysis Projects - demo projects showcasing data processing from different sources, cleaning, processing and shaping, and at the end - visualization. 
+A collection of demo projects showcasing end-to-end data analysis workflows, including data retrieval, processing, cleaning, shaping, and visualization.
 
-**Tools**: 
-- Python
-- Postgres
-- SQL
-- MS Excel/CSV
-- Power BI
+**Tools Used**: 
+- **Python**: For data retrieval and automation.
+- **PostgreSQL**: For data storage and processing.
+- **SQL**: For advanced data manipulation and preparation.
+- **MS Excel/CSV**: For data input/output.
+- **Power BI**: For dashboard creation and visualization.
 
 ## Stock Portfolio Dashboard
 [01-Stock-Portfolio-Data-Processing-Dashboards](https://github.com/uglydata/Data-Analysis-Projects/tree/main/01-Stock-Portfolio-Data-Processing-Dashboards)
 
-This project focuses on the following tasks:
+This project demonstrates the creation of a dashboard for analyzing stock portfolios. Key steps include:
 
 Stock Price Retrieval, Portfolio definition, Visualization:
 1. Portfolio Setup:
@@ -27,8 +27,19 @@ Stock Price Retrieval, Portfolio definition, Visualization:
 - Prepare the data for Power BI by exporting it as a CSV file.
 
 4. Data Visualization:
-- Load the cleaned data into Power BI.
-- Create and showcase several dashboard and report variations.
+- Import the prepared data into Power BI.
+- Create dashboards and reports, including:
+-- Portfolio distribution by sector.
+-- Dividend yield analysis.
+-- Monthly and yearly performance trends.
 
 ## Finance Dashboard
-tbd
+**Status**: Coming Soon
+This project will showcase advanced financial data analysis and visualization techniques.
+
+# About
+This repository is designed for educational and demonstration purposes, providing a hands-on guide for:
+
+- Data processing pipelines.
+- Advanced SQL and Python workflows.
+- Creating insightful dashboards for decision-making.
