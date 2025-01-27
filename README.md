@@ -9,7 +9,7 @@ Data Analysis Projects - demo projects showcasing data processing from sources, 
 - Power BI
 
 ## Stock Portfolio Dashboard
-tbd
+01-Stock-Portfolio-Data-Processing-Dashboards
 
 ## Finance Dashboard
 tbd
