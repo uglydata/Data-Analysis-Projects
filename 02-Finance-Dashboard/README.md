@@ -55,13 +55,13 @@ File:
 - **Divisional Analysis** for performance and productivity.
 - **Team Radar** for team comparison.
 
-tbd
+**Examples**
 
-<img src="????" alt="image" width="640" />
+<img width="640" alt="image" src="https://github.com/user-attachments/assets/e0ab0fe2-16ce-47a2-b5f8-f4c1ce149902" />
 
-<img src="???" alt="image" width="640" />
+<img width="640" alt="image" src="https://github.com/user-attachments/assets/50b42533-514d-4c13-9628-1e9559aaa152" />
 
-
+<img width="640" alt="image" src="https://github.com/user-attachments/assets/82f30fe5-5a23-42fa-9088-01cd879f230e" />
 
 
 ---
