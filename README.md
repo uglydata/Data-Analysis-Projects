@@ -34,8 +34,17 @@ Stock Price Retrieval, Portfolio definition, Visualization:
 -- Monthly and yearly performance trends.
 
 ## Finance Dashboard
-**Status**: Coming Soon
-This project will showcase advanced financial data analysis and visualization techniques.
+[02-Finance Dashboard](https://github.com/uglydata/Data-Analysis-Projects/tree/main/02-Finance-Dashboard)
+
+This project demonstrates the process of generating, shaping, and visualizing financial data to create insightful dashboards in Power BI. The focus is on analyzing key financial metrics like revenue, costs, profit/loss, and productivity for divisions over a specified period.
+High level dashboard w/o detailed project info (separate dashboard).
+
+1. Prepare Data:
+- MS Excel - Randomly generate finance data
+
+2. Data Visualization:
+- Load the data into Power BI.
+- Create and showcase several dashboard and report variations.
 
 # About
 This repository is designed for educational and demonstration purposes, providing a hands-on guide for:
