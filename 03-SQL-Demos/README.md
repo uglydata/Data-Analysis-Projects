@@ -23,6 +23,12 @@ The analysis **sql-portfolio-calculations.sql** consists of three main parts:
 - Joins stock data with **portfolio allocations** to calculate **total portfolio value**.  
 - Aggregates **dividends earned** per stock using `SUM() OVER()`.  
 
+<img src="https://github.com/user-attachments/assets/73e5ed18-68a4-4843-b56f-52cb6bc2f5b5" alt="image" width="640"/>
+
+
+<img src="https://github.com/user-attachments/assets/0968136f-4083-4b0a-a6a9-591e6a502534" alt="image" width="640"/>
+
+
 This project **mirrors data transformations** done in Power BI but executes them **entirely in SQL** for efficiency and automation.
 
 
