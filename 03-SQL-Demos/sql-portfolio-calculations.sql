@@ -241,26 +241,28 @@ group by  portfolio, date_year
 order by  portfolio, date_year
 ;
 
+----------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------
 -- different SQLs - data quality checks, statistics and misc insights.
-
-
--- received dividends by portfolio, ticker, cumulative
+-- received dividends by portfolio, ticker, cumulative, average for portfolio dividends last 3 years
 select 
-	ticker, 
+--	ticker, 
 	portfolio,
 	 date_part('year',date),
 	sum(received_dividends) as dividendsreiceived
-	, sum(sum(received_dividends)) over (order by ticker, date_part('year',date)) as recordcount_running
+	, sum(sum(received_dividends)) over (partition by partition order by date_part('year',date)) as recordcount_running
+	, avg(sum(received_dividends)) over (partition by portfolio order by date_part('year',date)
+		rows between 2 preceding and current row) as dividends_avg_last_3month
 from temp_portfelis_
-	where ticker = 'AAPL'
-group by 1, 2, 3
+	where --		and ticker = 'AAPL'
+		and portfolio like '%Home'
+		and  date_part('year',date)<>2025
+group by 1, 2
 order by 2
 ;
 
-
---- porftolio data -simulate powerbi, with CTE, values year and month end, 3 month average
+----------------------------------------------------------------------------------------
+--- porftolio data -simulate powerbi, with CTE, provide porftolio values year and month end and last 3 month average
 -- Year-End, Month-End, and 3-Month Rolling Average
 
 with portfolio_year_end as (
@@ -302,7 +304,7 @@ from 	aggregated_portfolio ap
 
 
 ----------------------------------------------------------------------------------------
--- use time series, return porftolio returns % quarter on quarter
+-- use time series, return porftolio returns % quarter on quarter 
 
 with calendar as (    
     select generate_series('2019-01-01'::timestamp, '2025-12-31', '1 day')::date as date
