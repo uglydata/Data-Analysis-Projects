@@ -52,10 +52,11 @@ High level dashboard w/o detailed project info (separate dashboard).
 This project enhances stock portfolio analysis using **advanced SQL techniques**, focusing on **time-series analysis, window functions, and performance optimization**.
 
 **Key Features:**  
-- Portfolio Value Analysis: Track year-end and month-end portfolio performance*using multiple SQL approaches (`RANK()`, `LAST_VALUE()`, `ROW_NUMBER()`).  
-- Quarter-over-Quarter Returns: Calculate QoQ portfolio returns with `LEAD()`, ensuring accurate time-based comparisons.  
+- Portfolio Value Analysis: Track year-end and month-end portfolio performance using multiple SQL approaches (RANK(), LAST_VALUE(), ROW_NUMBER()).
+- Quarter-over-Quarter Returns: Calculate QoQ portfolio returns with LEAD(), ensuring accurate time-based comparisons.
 - Query Performance Optimization: Compare different SQL techniques to balance speed and readability.
-- Goal is to show how to shape data in SQL - the project enhances the 1st project (Stock Portfolio Dashboard) about stock portfolio and shapes data in SQL in similar ways to how it is one in Power BI in the 1st project.
+- Techniques Used: Window functions (LEAD, LAG, First, Last, Rank etc), subqueries, and multiple SQL methodologies to analyze portfolio data.
+- Objective: Demonstrates how to structure and transform stock portfolio data using SQL, replicating similar methodologies used in Power BI in the Stock Portfolio Dashboard project
 
 ## Purpose:
 This project demonstrates **data shaping in SQL**, mirroring how portfolio analysis is structured in **Power BI** in the **Stock Portfolio Dashboard** project. It showcases how **SQL can efficiently preprocess and transform stock data** before visualization.
