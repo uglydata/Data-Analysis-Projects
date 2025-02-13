@@ -15,11 +15,11 @@ Unlike the **Stock Portfolio Dashboard**, which relies on Power BI, this project
 
 ## SQL Enhancements
 
-The analysis consists of three main parts:
+The analysis **sql-portfolio-calculations.sql** consists of three main parts:
 
 ### 1️⃣ Portfolio Value Calculation
 - Computes **monthly stock values** using `LAST_VALUE()`, `MAX()`, and `MIN()`.
-- Uses **CTEs** to clean and deduplicate stock price data.
+- Uses **CTEs** to clean and deduplicate stock price data. Different approaches.
 
 ### 2️⃣ Monthly & Quarter-over-Quarter Returns
 - Calculates **month-over-month stock performance** using `LAG()`.
