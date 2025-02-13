@@ -1,50 +1,45 @@
+## SQL DEMO - Portfolio Analysis - Summary
 
-# SQL Portfolio Analysis Enhancements - SQL DEMO
+This project processes stock portfolio data **entirely in SQL**, focusing on **time-series analysis, stock performance tracking, and portfolio valuation**.
 
-## Overview -  SQL utilization
-
-This project enhances stock portfolio analysis using **advanced SQL** techniques, focusing on:
-
-- **Time-Series Analysis**: Tracking portfolio values across monthly, quarterly, and yearly intervals.
-- **Window Functions**: Applying `RANK()`, `LAG()`, and `LEAD()` to analyze stock performance.
-- **Portfolio Performance Tracking**: Computing stock returns, ranking best/worst performers, and tracking dividends.
-
-Unlike the **Stock Portfolio Dashboard**, which relies on Power BI, this project processes all data **directly in SQL** for efficiency and automation.
-
-## Steps
-
-## SQL Enhancements
+### **SQL Breakdown - 3 Key Parts**
 
 The analysis **sql-portfolio-calculations.sql** consists of three main parts:
 
-### 1️⃣ Portfolio Value Calculation
+#### **Portfolio Value Calculation (6 Approaches)**  
+- Cleans stock price data using **CTEs** to remove duplicates.  
+- Determines **monthly closing prices** using `LAST_VALUE()`, `MAX()`, and `MIN()`.  
+- Demonstrates **6 different approaches**, including **window functions, subqueries, and optimized techniques (`DISTINCT ON`, `ROW_NUMBER()`)**.
 - Computes **monthly stock values** using `LAST_VALUE()`, `MAX()`, and `MIN()`.
 - Uses **CTEs** to clean and deduplicate stock price data. Different approaches.
 
-### 2️⃣ Monthly & Quarter-over-Quarter Returns
+#### **Monthly & Quarter-over-Quarter Returns**
 - Calculates **month-over-month stock performance** using `LAG()`.
 - Identifies **top 3 best & worst performers** per month using `RANK()`.
 
-### 3️⃣ Portfolio Holdings & Dividend Tracking
-- Joins **stock prices** with portfolio holdings to calculate **total portfolio value**.
-- Tracks **dividends earned per stock** using `SUM() OVER(PARTITION BY ticker)`.
+<img src="https://github.com/user-attachments/assets/ec675885-1948-4fdb-89c2-f8bb58819471" alt="image" width="640" />
 
----
+#### **Portfolio Holdings & Dividend Tracking**  
+- Joins stock data with **portfolio allocations** to calculate **total portfolio value**.  
+- Aggregates **dividends earned** per stock using `SUM() OVER()`.  
 
-## Data Sources & Dependencies
+This project **mirrors data transformations** done in Power BI but executes them **entirely in SQL** for efficiency and automation.
 
-### Input Tables:
+
+### Data Sources & Dependencies
+
+#### Input Tables:
 - **`stock_and_dividends`**: Contains historical stock prices and dividend payouts.
 - **`portfolio_info`**: Tracks user portfolios and stock allocations.
 - **`calendar`**: Ensures each month is accounted for, even if stock data is missing.
 
-### Expected Outputs:
+#### Expected Outputs:
 - Monthly portfolio values per stock.
 - Month-over-month stock performance ranking.
 - Dividend accumulation per stock & portfolio.
 
 ---
 
-## Future Enhancements
+#### Future Enhancements
 - Extend time-series analysis to **quarterly and yearly** intervals.
 - Optimize query performance for **large datasets**.
