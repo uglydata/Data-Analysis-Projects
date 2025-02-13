@@ -45,6 +45,8 @@ This project **mirrors data transformations** done in Power BI but executes them
 - **`portfolio_info`**: Tracks user portfolios and stock allocations.
 - **`calendar`**: Ensures each month is accounted for, even if stock data is missing.
 
+Data Source: https://github.com/uglydata/Data-Analysis-Projects/blob/main/01-Stock-Portfolio-Data-Processing-Dashboards/1_stockportfolio_prices_download.py
+
 #### Expected Outputs:
 - Monthly portfolio values per stock.
 - Month-over-month stock performance ranking.
