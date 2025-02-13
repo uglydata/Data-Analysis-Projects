@@ -25,9 +25,15 @@ The analysis **sql-portfolio-calculations.sql** consists of three main parts:
 
 <img src="https://github.com/user-attachments/assets/73e5ed18-68a4-4843-b56f-52cb6bc2f5b5" alt="image" width="640"/>
 
+Portfolio value at the end of the month, last 3 months average value:
+
+Dividends received per ticker, cumulative, average last 3 months:
 
 <img src="https://github.com/user-attachments/assets/0968136f-4083-4b0a-a6a9-591e6a502534" alt="image" width="640"/>
 
+Quarter over quarter returns:
+
+<img src="https://github.com/user-attachments/assets/4bd0a83a-1fa6-4b61-a1a6-c7da2e7f9086" alt="image" width="640"/>
 
 This project **mirrors data transformations** done in Power BI but executes them **entirely in SQL** for efficiency and automation.
 
