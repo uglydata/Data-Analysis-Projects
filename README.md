@@ -54,7 +54,8 @@ This project enhances stock portfolio analysis using **advanced SQL techniques**
 **Key Features:**  
 - Portfolio Value Analysis: Track year-end and month-end portfolio performance*using multiple SQL approaches (`RANK()`, `LAST_VALUE()`, `ROW_NUMBER()`).  
 - Quarter-over-Quarter Returns: Calculate QoQ portfolio returns with `LEAD()`, ensuring accurate time-based comparisons.  
-- Query Performance Optimization: Compare different SQL techniques to balance speed and readability.  
+- Query Performance Optimization: Compare different SQL techniques to balance speed and readability.
+- Goal is to show how to shape data in SQL - the project enhances the 1st project (Stock Portfolio Dashboard) about stock portfolio and shapes data in SQL in similar ways to how it is one in Power BI in the 1st project.
 
 
 # About
