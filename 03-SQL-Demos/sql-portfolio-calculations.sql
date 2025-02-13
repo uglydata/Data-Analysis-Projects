@@ -6,7 +6,7 @@
 -- TECHNIQUES DEMONSTRATED (6 Approaches):
 -- 1. Window Functions (`RANK()`, `LAST_VALUE()`)
 -- 2️. Subqueries (Correlated & Non-Correlated)
--- 3️. ptimized Combinations (`DISTINCT ON`, `ROW_NUMBER()`)
+-- 3️. Optimized Combinations (`DISTINCT ON`, `ROW_NUMBER()`)
 
 -- PERFORMANCE COMPARISON:
 -- - Some methods are **fast & efficient**, others are **simpler but slower**.
