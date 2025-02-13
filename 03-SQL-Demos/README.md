@@ -1,9 +1,9 @@
 
 # SQL Portfolio Analysis Enhancements - SQL DEMO
 
-## Overview
+## Overview -  SQL utilization
 
-This project extends the stock portfolio analysis by incorporating time-series calculations for enhanced financial insights. These SQL scripts aim to provide:
+This project enhances stock portfolio analysis using **advanced SQL** techniques, focusing on time-series analysis, window functions, and performance optimization. These SQL scripts aim to provide:
 
 - **Portfolio Value Analysis**: Monthly and yearly tracking of stock portfolio value. Demonstrate different approaches.
 - **Rolling Averages & Volatility**: Trends in stock prices over time.
@@ -14,7 +14,7 @@ This project extends the stock portfolio analysis by incorporating time-series c
 
 ## Steps
 
-###New SQL Enhancements
+### SQL Enhancements
 
 1️.Portfolio Value & Performance Tracking
 
