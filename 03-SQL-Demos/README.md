@@ -37,3 +37,7 @@ Insights: Optimize investment decisions by understanding stock holding duration 
 **Goal: Track total dividends received per portfolio/ticker over time.**
 Key SQL Concepts: SUM() OVER (ORDER BY time), PARTITION BY ticker
 Insights: Identify high-dividend stocks and analyze dividend growth trends.
+
+
+*Dependency*:
+[Executed SQL](https://github.com/uglydata/Data-Analysis-Projects/blob/main/01-Stock-Portfolio-Data-Processing-Dashboards/3_stocks_portfolio_processing.sql)
