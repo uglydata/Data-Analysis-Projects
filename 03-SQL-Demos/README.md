@@ -44,3 +44,7 @@ See [sql-portfolio-calculations.sql](https://github.com/uglydata/Data-Analysis-P
 
 *Dependency*:
 [Executed SQL - preparation of raw data](https://github.com/uglydata/Data-Analysis-Projects/blob/main/01-Stock-Portfolio-Data-Processing-Dashboards/3_stocks_portfolio_processing.sql)
+
+DB table **temp_portfelis_** - flat table containing portfolio stocks, dates, prices for the years 2020-2025:
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/d3e21c24-d944-4599-b58b-029c1e3a4baf" />
+
