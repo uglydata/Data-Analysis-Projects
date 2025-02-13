@@ -47,7 +47,7 @@ High level dashboard w/o detailed project info (separate dashboard).
 - Create and showcase several dashboard and report variations.
 
 ## SQL DEMO
-[https://github.com/uglydata/Data-Analysis-Projects/tree/main/03-SQL-Demos]
+[03-SQL-DEMOs](https://github.com/uglydata/Data-Analysis-Projects/tree/main/03-SQL-Demos)
 
 This project enhances stock portfolio analysis using **advanced SQL techniques**, focusing on **time-series analysis, window functions, and performance optimization**.  
 
