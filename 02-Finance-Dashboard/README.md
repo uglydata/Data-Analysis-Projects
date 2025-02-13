@@ -61,8 +61,13 @@ File:
 
 <img width="640" alt="image" src="https://github.com/user-attachments/assets/50b42533-514d-4c13-9628-1e9559aaa152" />
 
-<img width="640" alt="image" src="https://github.com/user-attachments/assets/82f30fe5-5a23-42fa-9088-01cd879f230e" />
+Monthly, non cumulative:
 
+<img width="640" alt="image" src="https://github.com/user-attachments/assets/9e0f920f-0bc6-45df-9ccf-ea98a5ccf009" />
+
+Same chart, running total - cumulative:
+
+<img width="640" alt="image" src="https://github.com/user-attachments/assets/1ab45dc9-7349-478d-b211-43a19d83bd53" />
 
 ---
 
