@@ -46,6 +46,17 @@ High level dashboard w/o detailed project info (separate dashboard).
 - Load the data into Power BI.
 - Create and showcase several dashboard and report variations.
 
+## SQL DEMO
+[https://github.com/uglydata/Data-Analysis-Projects/tree/main/03-SQL-Demos]
+
+This project enhances stock portfolio analysis using **advanced SQL techniques**, focusing on **time-series analysis, window functions, and performance optimization**.  
+
+### **Key Features:**  
+- **Portfolio Value Analysis:** Track **year-end and month-end portfolio performance** using multiple SQL approaches (`RANK()`, `LAST_VALUE()`, `ROW_NUMBER()`).  
+- **Quarter-over-Quarter Returns:** Calculate **QoQ portfolio returns** with `LEAD()`, ensuring accurate time-based comparisons.  
+- **Query Performance Optimization:** Compare different SQL techniques to balance **speed and readability**.  
+
+
 # About
 This repository is designed for educational and demonstration purposes, providing a hands-on guide for:
 
