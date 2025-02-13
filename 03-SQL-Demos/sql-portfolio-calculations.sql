@@ -1,3 +1,4 @@
+-- PART 1
 
 -- SQL DEMO: Comparing Multiple Approaches to Year-End Portfolio Value Calculation
 
@@ -242,6 +243,7 @@ order by  portfolio, date_year
 ;
 
 ----------------------------------------------------------------------------------------
+-- PART 2
 
 -- different SQLs - data quality checks, statistics and misc insights.
 -- received dividends by portfolio, ticker, cumulative, average for portfolio dividends last 3 years
@@ -343,4 +345,162 @@ order by
 	qr.portfolio, qr.year, qr.quarter
 ;
 
+
+----------------------------------------------------------------------------------------
+-- PART 3
+
+/*
+Query calculates monthly portfolio values using timeseries data.
+Tables Used: calendar, stock_and_dividends, portfolio_info
+
+Approach:
+	Excludes duplicates from stock prices.
+	Retrieves monthly closing prices using window functions.
+	Computes portfolio values and dividends for each stock.
+	Uses CTEs, window functions, and LEFT JOINs to align stock data with portfolio holdings.
+*/
+
+with calendar as (
+    select generate_series('2019-01-01'::timestamp, '2025-12-31', '1 month')::date as date
+)
+-- monthly prices 
+, deduped_prices as (
+    select 
+      p.ticker
+    , last_value(date) over (partition by ticker, date_part('year', date), date_part('month', date) order by date asc
+      rows between unbounded preceding and unbounded following) as month_closing_day
+    , max(date) over (partition by ticker, date_part('year', date), date_part('month', date)) as month_closing_day2
+    , last_value(closing_price) over (partition by ticker, date_part('year', date), date_part('month', date) order by date asc
+      rows between unbounded preceding and unbounded following) as month_closing_price
+    , max(closing_price) over (partition by ticker, date_part('year', date), date_part('month', date)) as month_max_price
+    , min(closing_price) over (partition by ticker, date_part('year', date), date_part('month', date)) as month_min_price
+    , sum(dividend_amount) over (partition by ticker, date_part('year', date), date_part('month', date)) as dividends_month
+    , row_number() over (
+        partition by ticker, date_part('year', date), date_part('month', date)
+        order by date desc
+      ) as row_num
+    from stock_and_dividends p
+    where 1=1
+)
+-deduped prices
+, stock_monthly_prices as (
+    select 
+      ticker
+    , month_closing_day
+    , month_closing_day2
+    , month_closing_price
+    , month_max_price
+    , month_min_price
+    , dividends_month
+    from deduped_prices
+    where row_num = 1
+)
+--calculate monthly value, max during month, min during month
+select  
+      c.date as date
+    , pi.ticker
+    , pi.shares
+    , smp.month_closing_price as closing_price
+    , (pi.shares * smp.month_closing_price) as portfolio_value
+    , (pi.shares * smp.dividends_month) as received_dividends
+    , pi.name as name
+    , pi.portfolio_name as portfolio
+    , (pi.shares * smp.month_max_price) as portfolio_value_max
+    , (pi.shares * smp.month_min_price) as portfolio_value_min
+from calendar c
+left join portfolio_info pi on 
+    (
+      (date_part('year', pi.date) = date_part('year', c.date)
+        and date_part('month', pi.date) = date_part('month', c.date))
+      or (pi.date <= c.date)
+    )
+left join stock_monthly_prices smp 
+    on date_part('year', smp.month_closing_day) = date_part('year', c.date)
+    and date_part('month', smp.month_closing_day) = date_part('month', c.date)
+    and smp.ticker = pi.ticker
+where 1=1
+  and pi.ticker = 'NOK'
+  and pi.portfolio_name = 'PortfolioHome'
+order by 1, 2;
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+--Calculate monthly returns for each stock ticker.
+--Identify top 3 best-performing and worst-performing stocks per month.
+--Future improvement: Extend to quarterly and yearly time-series analysis.
+--Techniques Used: CTE  to structure data, Window functions (lag(), rank(), sum() over()) for ranking and performance tracking.
+--Time-series joins using a generated calendar.
+
+
+with calendar as (
+   
+   select generate_series('2019-01-01'::timestamp, '2025-12-31', '1 month')::date as date
+)
+-- daily prices- get closing price on monthly basis
+, deduped_prices as (
+    select 
+      p.ticker
+    , first_value(date) over (partition by ticker, date_part('year', date), date_part('month', date) order by date desc
+      rows between unbounded preceding and unbounded following) as month_closing_day
+    , last_value(closing_price) over (partition by ticker, date_part('year', date), date_part('month', date) order by date asc 
+      rows between unbounded preceding and unbounded following) as month_closing_price
+    , max(closing_price) over (partition by ticker, date_part('year', date), date_part('month', date)) as month_max_price
+    , min(closing_price) over (partition by ticker, date_part('year', date), date_part('month', date)) as month_min_price
+    , sum(dividend_amount) over (partition by ticker, date_part('year', date), date_part('month', date)) as dividends_month
+    , row_number() over (
+        partition by ticker, date_part('year', date), date_part('month', date)
+        order by date desc
+      ) as row_num
+    from stock_and_dividends p
+    where 1=1
+)
+-- deduplicated monthly based stock price table
+, stock_monthly_prices as (
+    select 
+      ticker
+    , month_closing_day	
+    , month_closing_price
+    , month_max_price
+    , month_min_price
+    , lag(month_closing_price) over (
+        partition by ticker
+        order by month_closing_day
+      ) as m_closing_price_prev
+    from deduped_prices
+    where row_num = 1
+)
+-- calculate rank for each of the ticker on monthly basis -return top 3 and worst 3
+, portfolio_ranked as (
+    select  
+      c.date as date
+    , smp.*
+    , smp.month_closing_price - smp.m_closing_price_prev as mom_return
+    , round(100 * (smp.month_closing_price - smp.m_closing_price_prev) / nullif(smp.m_closing_price_prev, 0), 2) as mom_perc
+    , rank() over (partition by c.date order by ((smp.month_closing_price - smp.m_closing_price_prev) / nullif(smp.m_closing_price_prev, 0)) desc) as rank_best
+    , rank() over (partition by c.date order by ((smp.month_closing_price - smp.m_closing_price_prev) / nullif(smp.m_closing_price_prev, 0)) asc) as rank_worst
+    from calendar c
+    left join stock_monthly_prices smp on 
+        date_part('year', smp.month_closing_day) = date_part('year', c.date)
+        and date_part('month', smp.month_closing_day) = date_part('month', c.date)
+    where 1=1
+      and date_part('year', c.date) = '2024'
+)
+-- return top 3 and worst 3 tickers by performance on monthly basis, for each ticker give number of times ticker has been worst or best case category
+select 
+      *
+    , case 
+        when rank_best < 4 then 'top 3 performing'
+        when rank_worst < 4 then 'worst 3 performing'
+        else '' 
+      end as category
+    , sum(
+        case when rank_best < 4 then 1 else 0 end
+      ) over (partition by ticker) as top_performing_count	
+    , sum(
+        case when rank_worst < 4 then 1 else 0 end
+      ) over (partition by ticker) as worst_performing_count	
+from portfolio_ranked 
+where 1=1
+  and (rank_worst < 4 or rank_best < 4)
+order by date, rank_best, rank_worst;
 
