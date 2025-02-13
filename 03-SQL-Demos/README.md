@@ -10,6 +10,8 @@ This project extends the stock portfolio analysis by incorporating time-series c
 - **Investment Duration Tracking**: Measuring how long stocks are held and their performance.
 - **Dividend Analysis**: Cumulative and yearly dividends earned per stock.
 
+- Project is based on the data from the 1st project in this demo repo about Stock Portfolio Dashboard- data is shaped using SQL, not Power BI like it is mostly done in the 1st demo project.
+
 ## Steps
 
 ###New SQL Enhancements
