@@ -101,6 +101,9 @@ Examples:
 
 <img src="https://github.com/user-attachments/assets/c996b2a1-07b0-43bd-8002-5aa5b7df43a8" alt="image" width="640" />
 
+Slope chart - absolute and relative changes:
+
+<img width="640" alt="image" src="https://github.com/user-attachments/assets/10d75ce8-7e88-4259-8769-570e1d7759a7" />
 
 
 ---

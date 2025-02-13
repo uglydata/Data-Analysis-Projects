@@ -1,18 +1,20 @@
 
 # SQL Portfolio Analysis Enhancements - SQL DEMO
 
-## Overview
+## Overview -  SQL utilization
 
-This project extends the stock portfolio analysis by incorporating time-series calculations for enhanced financial insights. These SQL scripts aim to provide:
+This project enhances stock portfolio analysis using **advanced SQL** techniques, focusing on time-series analysis, window functions, and performance optimization. These SQL scripts aim to provide:
 
 - **Portfolio Value Analysis**: Monthly and yearly tracking of stock portfolio value. Demonstrate different approaches.
 - **Rolling Averages & Volatility**: Trends in stock prices over time.
 - **Investment Duration Tracking**: Measuring how long stocks are held and their performance.
 - **Dividend Analysis**: Cumulative and yearly dividends earned per stock.
 
+- Project is based on the data from the 1st project in this demo repo about Stock Portfolio Dashboard- data is shaped using SQL, not Power BI like it is mostly done in the 1st demo project.
+
 ## Steps
 
-###New SQL Enhancements
+### SQL Enhancements
 
 1️.Portfolio Value & Performance Tracking
 
@@ -38,6 +40,11 @@ Insights: Optimize investment decisions by understanding stock holding duration 
 Key SQL Concepts: SUM() OVER (ORDER BY time), PARTITION BY ticker
 Insights: Identify high-dividend stocks and analyze dividend growth trends.
 
+See [sql-portfolio-calculations.sql](https://github.com/uglydata/Data-Analysis-Projects/blob/main/03-SQL-Demos/sql-portfolio-calculations.sql)
 
 *Dependency*:
-[Executed SQL](https://github.com/uglydata/Data-Analysis-Projects/blob/main/01-Stock-Portfolio-Data-Processing-Dashboards/3_stocks_portfolio_processing.sql)
+[Executed SQL - preparation of raw data](https://github.com/uglydata/Data-Analysis-Projects/blob/main/01-Stock-Portfolio-Data-Processing-Dashboards/3_stocks_portfolio_processing.sql)
+
+DB table **temp_portfelis_** - flat table containing portfolio stocks, dates, prices for the years 2020-2025:
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/d3e21c24-d944-4599-b58b-029c1e3a4baf" />
+
