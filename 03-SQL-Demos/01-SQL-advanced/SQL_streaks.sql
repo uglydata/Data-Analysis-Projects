@@ -1,4 +1,10 @@
--- streaks misc
+--2025.04.30. v1
+/*
+    Streaks in SQL
+	Streaks are sequences of consecutive rows that meet a certain condition.
+	For example, you might want to find players who scored more than 20 points in consecutive seasons.
+*/
+
 /*
 
 General Algorithm Steps for Streak Calculation
