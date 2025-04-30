@@ -1,4 +1,11 @@
-## SQL DEMO - Portfolio Analysis - Summary
+# SQL DEMO 
+Parts: 
+
+  a. Portfolio Analysis 
+
+  b. Miscellaneous Examples and Applications,
+
+## Portfolio Analysis - Summary
 
 This project processes stock portfolio data **entirely in SQL**, focusing on **time-series analysis, stock performance tracking, and portfolio valuation**.
 
@@ -57,3 +64,12 @@ Data Source: https://github.com/uglydata/Data-Analysis-Projects/blob/main/01-Sto
 #### Future Enhancements
 - Extend time-series analysis to **quarterly and yearly** intervals.
 - Optimize query performance for **large datasets**.
+
+## Miscellaneous Examples and Applications – Summary  
+See: [SQL Advanced Examples](https://github.com/uglydata/Data-Analysis-Projects/tree/main/03-SQL-Demos/01-SQL-advanced)
+
+- Text analysis and manipulations (arrays, nesting)
+- Streak calculations
+- Recursive
+
+
