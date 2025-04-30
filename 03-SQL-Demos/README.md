@@ -71,5 +71,6 @@ See: [SQL Advanced Examples](https://github.com/uglydata/Data-Analysis-Projects/
 - Text analysis and manipulations (arrays, nesting)
 - Streak calculations
 - Recursive
+- misc.snipets - useful
 
 
