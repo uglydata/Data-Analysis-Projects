@@ -9,7 +9,7 @@ Setup
     Load config, logging, and API key
     Determine created_on filter and mode
 Project Discovery
-    Load all subprojects under "pieteikumu-registrs" and "isian-projekti"
+    Load all subprojects under "Project-Beast" and "Project-Alfa"
 Issue Fetching
     For each project, fetch issues with pagination and filters
     Use include=custom_fields,journals for full and journal modes
