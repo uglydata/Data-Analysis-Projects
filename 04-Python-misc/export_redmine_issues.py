@@ -1,4 +1,8 @@
 '''
+
+Goal
+    Using Redmine API export actual data for all the issues or historical journal data for all the issues
+
 Modes
     limited: basic issue data (default)
     full: issue data + custom fields + last journal note
@@ -8,8 +12,10 @@ Algorithm Summary
 Setup
     Load config, logging, and API key
     Determine created_on filter and mode
+
 Project Discovery
     Load all subprojects under "Project-Beast" and "Project-Alfa"
+    
 Issue Fetching
     For each project, fetch issues with pagination and filters
     Use include=custom_fields,journals for full and journal modes
