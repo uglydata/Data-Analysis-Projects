@@ -1,9 +1,9 @@
 """
-Redmine Issue Importer from LUIS Core CSV
+Redmine Issue Importer from BackOffice Core (Core) system exported to CSV - importing into REDMINE using API
 
 Description:
 ------------
-This script imports or updates issues in Redmine using data from a CSV export from LUIS Core.
+This script imports or updates issues in Redmine using data from a CSV export from Core.
 It matches issues using the unique 'Xid' field and ensures proper field, status, and assignee mapping.
 
 Algorithm:
@@ -41,8 +41,8 @@ Field Mapping:
 | Txt             | Subject                |
 | Izveidots       | Start date             |
 | K.Termiņš       | Due date               |
-| nov(h)          | Estimated hours        |
-| Tips Statuss    | Mapped to status_id    |
+| estime(h)       | Estimated hours        |
+| Status          | Mapped to status_id    |
 | Izpilda         | Assigned to (user_id)  |
 
 Status Mapping:
@@ -70,7 +70,7 @@ Other Notes:
 - Adds a private Redmine comment on every update to track import actions.
 - Default tracker: Pieteikums (ID 1)
 - Default priority: Normāla (ID 2)
-- Default assignee: 7037 (Janis Zvirgzds)
+- Default assignee: 7037 (BigJoshn)
     - assignee is recognized from dictionary, if not found- assign default
 """
 
@@ -118,7 +118,7 @@ try:
     redmine_config = config["redmine"]
     api_key = redmine_config["api_key"]
     base_url = redmine_config["base_url"]
-    project_identifier = "luis-importetie"
+    project_identifier = "core-project"
 except KeyError as e:
     log_and_print(f"Missing config key: {e}")
     sys.exit(1)
@@ -144,8 +144,8 @@ status_mapping = {
 
 # Assignee mapping
 assignee_mapping = {
-    "IBRIM": 24,   # Ivars Brikmanis
-    "EPOCS": 312   # Edgars Počs
+    "INTA": 24,   # Bob Dylan
+    "PECA": 312   # Diva Boba
 }
 default_assignee = 7037  # Janis Zvirgzds
 
@@ -230,7 +230,7 @@ def create_or_update_issue(row):
     issue_data = {
         "project_id": project_identifier,
         "subject": str(row["Txt"]),
-        "description": f"Xid: {xid}\nLUIS: https://luis.lu.lv/pls/lu/uzdrab.uzdevums?uzid1={xid[1:]}",
+        "description": f"Xid: {xid}\nID: url={xid[1:]}",
         "tracker_id": 1,
         "priority_id": 2,
         "status_id": status_id
