@@ -71,7 +71,7 @@ This project demonstrates **data shaping in SQL**, mirroring how portfolio analy
 ## 04-Python Misc
 [04-Python-misc](https://github.com/uglydata/Data-Analysis-Projects/tree/main/04-Python-misc)
 
-Automation scripts for issue-tracker data exchange (import/export via REST API), included as an example of working with external APIs, config-driven scripts, and CSV-based data interchange.
+Automation scripts for issue-tracker data exchange via REST API: CSV import/export for current-state snapshots, full JSON history export for lead-time/cycle-time analysis (a snapshot can't answer "how long did this sit in review"), a per-project full export for retrospectives, and an analysis script that computes lead time and time-in-status from the exported history.
 
 ## 05-Database Migration Demo
 [05-Database-Migration-Demo](https://github.com/uglydata/Data-Analysis-Projects/tree/main/05-Database-Migration-Demo)
