@@ -73,9 +73,16 @@ This project demonstrates **data shaping in SQL**, mirroring how portfolio analy
 
 Automation scripts for issue-tracker data exchange (import/export via REST API), included as an example of working with external APIs, config-driven scripts, and CSV-based data interchange.
 
+## 99-Delivery Management
+[99-Delivery-Management](https://github.com/uglydata/Data-Analysis-Projects/tree/main/99-Delivery-Management)
+
+A written playbook on running software delivery — people management, operational cadence, requirements/governance design, finance management, and the metrics/KPIs that tie it together. Not a data project; included as a companion reference from 15+ years leading delivery teams, since the "why" behind data-driven delivery oversight (the dashboards in projects 01-03) comes from this operating model.
+
 ## About
 This repository is designed for educational and demonstration purposes, providing a hands-on guide for:
 - Pulling data from external sources (Yahoo Finance, REST APIs) with Python.
 - Loading and transforming data in PostgreSQL/SQL, including time-series and window-function techniques.
 - Shaping data for and visualizing it in Power BI.
 - Structuring a small, reproducible end-to-end data pipeline: retrieve → store → clean → transform → visualize.
+
+Raw sample datasets used by the projects above live in [98-Datasets](98-Datasets).
