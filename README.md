@@ -1,4 +1,6 @@
 # Data-Analysis-Projects
+[![SQL tests](https://github.com/uglydata/Data-Analysis-Projects/actions/workflows/sql-tests.yml/badge.svg)](https://github.com/uglydata/Data-Analysis-Projects/actions/workflows/sql-tests.yml)
+
 A collection of demo projects showcasing end-to-end data analysis workflows, including data retrieval, processing, cleaning, shaping, and visualization.
 
 **Tools Used**: 
@@ -7,6 +9,8 @@ A collection of demo projects showcasing end-to-end data analysis workflows, inc
 - **SQL**: For advanced data manipulation and preparation.
 - **MS Excel/CSV**: For data input/output.
 - **Power BI**: For dashboard creation and visualization.
+
+**Setup**: `pip install -r requirements.txt` (pandas, requests, yfinance - used by the Python scripts in projects 01 and 04).
 
 ## 01-Stock Portfolio Dashboard
 [01-Stock-Portfolio-Data-Processing-Dashboards](https://github.com/uglydata/Data-Analysis-Projects/tree/main/01-Stock-Portfolio-Data-Processing-Dashboards)
@@ -60,6 +64,8 @@ This project enhances stock portfolio analysis using **advanced SQL techniques**
 
 **Purpose**:
 This project demonstrates **data shaping in SQL**, mirroring how portfolio analysis is structured in **Power BI** in the **Stock Portfolio Dashboard** project. It showcases how **SQL can efficiently preprocess and transform stock data** before visualization.
+
+**Tests**: the org-hierarchy recursive-CTE example ([`01-SQL-advanced/tests/test_org_hierarchy.sql`](https://github.com/uglydata/Data-Analysis-Projects/blob/main/03-SQL-Demos/01-SQL-advanced/tests/test_org_hierarchy.sql)) has assertion checks against hand-computed expected values, run automatically on every push via [GitHub Actions](.github/workflows/sql-tests.yml) against a real Postgres container.
 
 
 ## 04-Python Misc

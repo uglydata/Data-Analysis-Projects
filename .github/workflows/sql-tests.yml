@@ -1,0 +1,32 @@
+name: SQL tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  org-hierarchy:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: portfolio_demo
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run org-hierarchy recursive-CTE assertions
+        env:
+          PGPASSWORD: postgres
+        run: |
+          psql -h localhost -U postgres -d portfolio_demo -v ON_ERROR_STOP=1 \
+            -f 03-SQL-Demos/01-SQL-advanced/tests/test_org_hierarchy.sql

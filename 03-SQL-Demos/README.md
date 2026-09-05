@@ -70,7 +70,7 @@ See: [SQL Advanced Examples](https://github.com/uglydata/Data-Analysis-Projects/
 
 - Text analysis and manipulations (arrays, nesting)
 - Streak calculations
-- Recursive
+- Recursive (org-hierarchy example has automated tests - see [`01-SQL-advanced/tests/`](01-SQL-advanced/tests/test_org_hierarchy.sql), run on every push via [GitHub Actions](../.github/workflows/sql-tests.yml))
 - misc.snipets - useful
 
 

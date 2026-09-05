@@ -37,4 +37,5 @@ Exports issues (with optional journal history) to CSV from one or more Redmine p
 
 2. Install requirements:
    ```bash
-   pip install requests pandas
+   pip install -r ../requirements.txt
+   ```
