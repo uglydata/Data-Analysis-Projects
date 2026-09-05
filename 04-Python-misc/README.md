@@ -52,3 +52,7 @@ python analyze_lead_cycle_time.py [path/to/output/folder]
    ```bash
    pip install -r ../requirements.txt
    ```
+
+## Known gap: no automated tests yet
+
+Unlike `03-SQL-Demos`, which has assertion-based tests running in CI against a live Postgres container, these scripts aren't tested automatically. That's a real gap, not an oversight I'm unaware of - the parsing logic in `analyze_lead_cycle_time.py` (reconstructing a status timeline from journal entries) is exactly the kind of code that should have unit tests with fixture JSON covering edge cases (an issue with no status changes, one still open, one with out-of-order journal timestamps). Next step for this folder.
