@@ -62,5 +62,14 @@ This project enhances stock portfolio analysis using **advanced SQL techniques**
 This project demonstrates **data shaping in SQL**, mirroring how portfolio analysis is structured in **Power BI** in the **Stock Portfolio Dashboard** project. It showcases how **SQL can efficiently preprocess and transform stock data** before visualization.
 
 
+## 04-Python Misc
+[04-Python-misc](https://github.com/uglydata/Data-Analysis-Projects/tree/main/04-Python-misc)
+
+Automation scripts for issue-tracker data exchange (import/export via REST API), included as an example of working with external APIs, config-driven scripts, and CSV-based data interchange.
+
 ## About
 This repository is designed for educational and demonstration purposes, providing a hands-on guide for:
+- Pulling data from external sources (Yahoo Finance, REST APIs) with Python.
+- Loading and transforming data in PostgreSQL/SQL, including time-series and window-function techniques.
+- Shaping data for and visualizing it in Power BI.
+- Structuring a small, reproducible end-to-end data pipeline: retrieve → store → clean → transform → visualize.
