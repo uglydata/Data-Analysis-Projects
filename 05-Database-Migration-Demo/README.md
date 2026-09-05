@@ -10,6 +10,18 @@ replaced with dynamic discovery or removed entirely - nothing here
 reflects any real client's actual data or schema. The technique and
 code structure are real; the specifics are not.
 
+**Why this was necessary:** the real source system was an old SQL
+Server 2008 instance with no drivers available for standard Oracle
+migration tooling (e.g. SQL Developer's migration wizard) to connect
+to it directly. Without a compatible driver, the only fallback was
+fully manual: exporting each table from SQL Server's admin tools to
+CSV, then importing into Oracle by hand - an approach I estimated
+would have taken weeks, possibly a month, across an entire schema.
+Connecting directly via a generic ODBC driver (rather than
+tool-specific connectors) sidestepped that limitation entirely, and
+the resulting script completed the same migration in roughly 30
+minutes.
+
 ## Problem
 
 Moving a relational schema from one engine to another (MySQL/MariaDB

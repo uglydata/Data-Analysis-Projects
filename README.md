@@ -73,6 +73,11 @@ This project demonstrates **data shaping in SQL**, mirroring how portfolio analy
 
 Automation scripts for issue-tracker data exchange (import/export via REST API), included as an example of working with external APIs, config-driven scripts, and CSV-based data interchange.
 
+## 05-Database Migration Demo
+[05-Database-Migration-Demo](https://github.com/uglydata/Data-Analysis-Projects/tree/main/05-Database-Migration-Demo)
+
+Generalizes a MySQL/MariaDB and SQL Server -> Oracle migration pattern built from real professional experience (schema discovery via `INFORMATION_SCHEMA`, type mapping, batched transfer, idempotent skip-if-exists, per-table error isolation, row-count verification). All identifying specifics are removed or replaced with dynamic discovery.
+
 ## 99-Delivery Management
 [99-Delivery-Management](https://github.com/uglydata/Data-Analysis-Projects/tree/main/99-Delivery-Management)
 
