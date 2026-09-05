@@ -1,14 +1,9 @@
---2025.04.30. v1
-/*
-	Text Formatting in SQL
-	- Capitalization and Formatting of Text
-
-	Examples of Regex and Array Functions for Text Formatting
-*/
-
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
+-- 2025.04.30. v1
+-- ============================================================
+-- Problem: normalize inconsistently-cased, hyphenated free text
+-- for display (e.g. user-entered titles/tags) - compares a
+-- regex approach vs an array-split approach for the same result.
+-- ============================================================
 
 with user_content as (
 	select 1 as id, 'hello world of SQL' as  content_text

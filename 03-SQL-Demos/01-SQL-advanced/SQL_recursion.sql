@@ -1,28 +1,25 @@
---2025.04.30. v1
+-- 2025.04.30. v1
+-- Recursive CTEs, two examples:
+--   a. organizational hierarchy (below) - a real recurring analyst need:
+--      level/team-size/budget rollups for org charts and cost reporting
+--   b. fibonacci (bottom of file) - pure recursion mechanics, no data-analyst framing
+
+-- ============================================================
+-- Problem: build an org chart - for each employee, determine
+-- their level, their team size, and the salary budget they
+-- control, including indirect reports.
+-- ============================================================
 /*
-    Example of recursion usage - use CTE and 'recursive'
-    
-    2 examples: 
-        a. organizational hierarchy
-        b. fibonacci
-*/
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
--- Example 1: Organizational hierarchy - employees and managers
-/*
- 
 +----------------+---------+
-| Column Name    | Type    | 
+| Column Name    | Type    |
 +----------------+---------+
 | employee_id    | int     |
 | employee_name  | varchar |
 | manager_id     | int     |
 | salary         | int     |
 | department     | varchar |
-+----------------+----------+
--- Create table
-drop table employees
++----------------+---------+
+
 CREATE TABLE employees (
     employee_id INT PRIMARY KEY,
     employee_name varchar,
@@ -30,11 +27,9 @@ CREATE TABLE employees (
 	salary int,
 	department varchar)
 
-delete from employees where 1=1
-
 -- Insert rows
 INSERT INTO employees (employee_id, employee_name, manager_id ,salary ,department) VALUES
-(1, 'Alice', null, 12000, 'Executuve'),
+(1, 'Alice', null, 12000, 'Executive'),
 (2, 'Bob', 1, 11000, 'Sales'),
 (3, 'Charlie', 1, 10000, 'Engineering'),
 (4, 'David', 2, 75000, 'Sales'),
@@ -135,13 +130,11 @@ order by
     budget desc, 
     d.employee_name asc
 )
-select * from results
---select * from teams order by 1, 2
+select * from results;
 
-
----------------------------------------------------------------------
--- just teams- every's manager each subordinate -direct or indirect
-
+-- ------------------------------------------------------------
+-- variant: flat list of every manager's subordinates (direct or indirect)
+-- ------------------------------------------------------------
 with recursive managers as (
 	select employee_id, employee_name, manager_id, salary, department from employees where manager_id is not null
 	union all
@@ -149,17 +142,14 @@ with recursive managers as (
 	from employees e
 		join managers m on m.employee_id = e.manager_id
 )
-select * 
+select *
 , count(employee_id) over (partition by manager_id) as subordinates
-, sum(salary) over (partition by manager_id) as budget -- without manager's salary - should add
+, sum(salary) over (partition by manager_id) as budget -- excludes manager's own salary
 from managers
-where 1=1
---	and employee_id=4
 order by manager_id
 ;
 
-
------------------------------------------------------------------------
+-- ------------------------------------------------------------
 -- option 2
 WITH RECURSIVE level_cte AS (
 	--levels
@@ -196,11 +186,9 @@ ORDER BY
 	budget DESC, 
 	employee_name
 )
---select * from results
-select * from level_cte
-;
+select * from results;
 
------------------------------------------------------------------------
+-- ------------------------------------------------------------
 -- option 3: close to option 1, different implementation
 WITH  recursive cte AS (
   SELECT e.employee_id , e.employee_name, COALESCE(e.manager_id, 0) AS manager_id , e.salary, 1 AS lvl
@@ -230,19 +218,14 @@ WITH  recursive cte AS (
 SELECT p.employee_id, t.employee_name, t.lvl AS level, p.team_size, p.budget
     FROM pre p
     JOIN tree t ON (t.employee_id = p.employee_id)
-    --JOIN Employees e ON (e.employee_id = p.employee_id)
     ORDER BY t.lvl, p.budget DESC
+;
 
-	
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
--- Example 2: Fibonacci numbers - recursive CTE
-
--- 1.calculate fibonacci, give number of numbers
--- 2.calc distribution of leading numbers - in generate series
-
-
+-- ============================================================
+-- Appendix: Fibonacci via recursive CTE.
+-- Recursion mechanics only - no data-analyst framing, kept here
+-- as a reference rather than a standalone example.
+-- ============================================================
 with recursive fibonacci as (
     select 1 as n, 0 as fibnumb, 1 as next_fib  
     union all

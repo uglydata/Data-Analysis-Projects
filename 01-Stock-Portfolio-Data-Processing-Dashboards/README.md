@@ -93,17 +93,29 @@ Examples:
 
 <img src="https://github.com/user-attachments/assets/3f845083-367b-46ea-be22-35b88c63d149" alt="image" width="640" />
 
+Main dashboard view: portfolio value, return %, dividend yield, and sector breakdown as KPI cards, with a month-over-month value/return trend and a cumulative dividends chart below. Filterable by year, month, and portfolio.
+
 <img src="https://github.com/user-attachments/assets/d292a687-f0de-45a6-9401-190021d71123" alt="image" width="640" />
+
+Same dashboard, alternate color theme - shows the sector-mix visuals can be restyled without touching the underlying data model.
 
 <img src="https://github.com/user-attachments/assets/2a29ec1a-c917-46b3-a84c-3f68bf15ed38" alt="image" width="640" />
 
+2022 view for the same portfolio: a down year (-9.13% return), with a treemap-style dividends-by-sector breakdown and a stacked-area dividend trend - useful for seeing which sectors kept paying out even while portfolio value fell.
+
 <img src="https://github.com/user-attachments/assets/2ef363b3-f580-4bb8-a63b-52a0f6e86978" alt="image" width="640" />
 
+2023 recovery view, plotting monthly value against monthly return % (scatter overlay) alongside cumulative vs. period dividends - lets you compare price recovery to income stability side by side.
+
 <img src="https://github.com/user-attachments/assets/c996b2a1-07b0-43bd-8002-5aa5b7df43a8" alt="image" width="640" />
+
+Report-page layout combining KPI tiles, a return %-by-sector bar chart, dividends-by-sector, and a top-positions table with per-ticker return % and sector tags - the single-page summary a stakeholder would actually skim.
 
 Slope chart - absolute and relative changes:
 
 <img width="640" alt="image" src="https://github.com/user-attachments/assets/10d75ce8-7e88-4259-8769-570e1d7759a7" />
+
+Slope chart comparing 2020 vs. 2023 dividends by sector, shown both in absolute (K) and relative (%) terms side by side - Financials went from the largest dividend contributor by a wide margin to roughly on par with Energy/Healthcare in relative-return terms, which the absolute-value chart alone would hide.
 
 
 ---

@@ -1,15 +1,11 @@
---2025.04.30. v1
-/*
-    Miscellaneous SQL Training
-		SQL Joins 
-		Window Functions
-		Text
-		Timeseries
-*/
-
-----------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------
+-- 2025.04.30. v1
+-- ============================================================
+-- Problem/reference: aligning sparse, irregular data (stock
+-- prices, portfolio holdings) onto a regular calendar - the join
+-- types, window functions, and date/time functions needed to fill
+-- gaps, get month-end values, and compute rolling averages when
+-- source data doesn't arrive on a fixed schedule.
+-- ============================================================
 -- windows functions
 /*
 All SQL Joins with Brief Descriptions
@@ -100,17 +96,15 @@ stddev_pop(mag) - STANDART deviation for all population
 stddev_samp(mag)  - STANDART deviation for sample,  n-1 minus observatiosn, parasti looooti tuvu
 */
 
- -- generate number series, like sometimes you need years -generate series is both for numbers, dates etc
- SELECT generate_series as terms 
-        FROM generate_series(1,20,1)
+ -- generate number series, e.g. when you need a list of years - generate_series works for both numbers and dates
+ SELECT generate_series as terms
+        FROM generate_series(1,20,1);
 
-date_part and date_trunc - date part returns number, bet date trunc - noīsina uz leju, piem, timestime tips, iedod month, atgriezīs 1.dienu mēnesī
-date trunc atgriež datumu
+-- date_part vs date_trunc: date_part returns a number (e.g. the month as an int),
+-- while date_trunc rounds a timestamp down to the given unit and returns a
+-- timestamp/date (e.g. date_trunc('month', ts) returns the 1st of that month).
 
-
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
+-- ------------------------------------------------------------
 -- joins
 --- inner join or simply join and with left join
 -- all clear
@@ -126,10 +120,7 @@ left join portfolio_info pi
 	on date_part('year', pi.date)=date_part('year', c.date) and date_part('month', pi.date)=date_part('month', c.date)
 order by c.date, pi.ticker	
 
----------------------------------------------------------v
----------------------------------------------------------v
----------------------------------------------------------v
----------------------------------------------------------v
+-- ------------------------------------------------------------
 -- cartesian join - all values vs all values
 with calendar AS (
     -- Generate a series of dates for the calendar
@@ -140,16 +131,11 @@ select
 	, pi.*
 from calendar c
 cross join portfolio_info pi
-	
-where 1=1
-	and date_part('year', c.date) = '2024'	
+where date_part('year', c.date) = '2024'
 	and pi.ticker in ('NOK', 'AAPL') AND pi.portfolio_name='Portfolio Joshua'
-order by c.date, pi.ticker	
+order by c.date, pi.ticker;
 
----------------------------------------------------------v
----------------------------------------------------------v
----------------------------------------------------------v
----------------------------------------------------------v
+-- ------------------------------------------------------------
 -- lateral join - from left side rows generate right side even if not present
 with calendar AS (
     -- Generate a series of dates for the calendar
@@ -160,27 +146,19 @@ select
 	, pi.*
 from calendar c
 join lateral (
-		select 
-			p.* 
+		select
+			p.*
 		from  portfolio_info p
-		where 1=1
-			and 
-				(
-					(date_part('year', p.date)=date_part('year', c.date) and date_part('month', p.date)=date_part('month', c.date))
-					or p.date<=c.date
-				
-				)
+		where (date_part('year', p.date)=date_part('year', c.date) and date_part('month', p.date)=date_part('month', c.date))
+			or p.date<=c.date
 			order by p.date desc
 	) pi on true
-where 1=1
-	and date_part('year', c.date) = '2024'	
-	and pi.ticker in ('NOK', '--AAPL') AND pi.portfolio_name='Portfolio Joshua'
-order by c.date, pi.ticker	
+where date_part('year', c.date) = '2024'
+	and pi.ticker in ('NOK', 'AAPL') AND pi.portfolio_name='Portfolio Joshua'
+order by c.date, pi.ticker;
 
 
-----------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------
+-- ------------------------------------------------------------
 -- windows functions
 
 
@@ -213,9 +191,6 @@ with calendar AS (
 				order by date desc
 			) as row_num
 from stock_and_dividends p
-where 1=1
-	
---limit 50
 )
 
 	select 
@@ -233,16 +208,17 @@ where 1=1
 from
 deduped_prices
 where row_num =1
+-- optional filters, left as toggles for exploration:
 --and date_part('year',month_closing_day)='2020'
 --and ticker in ('NOK')
+;
 
-select 2/3::decimal 
+-- gotcha: the ::decimal cast binds to 3, not to the whole expression,
+-- so 2/3::decimal still runs integer division first if 2 and 3 are both
+-- ints elsewhere - cast the operand(s) you actually want as decimal.
+select 2/3::decimal;
 
-
-----------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------
-
+-- ------------------------------------------------------------
 -- execution order
 /*
 Table 8-1. SQL query order of evaluation
@@ -260,16 +236,10 @@ including aggregations
 10 LIMIT and OFFSET
 */
 
--- data analysis - advanced sql book
--- Cathy Tanimura - SQL for Data Analysis_ Advanced Techniques for Transforming Data into Insights-O'Reilly Media (2021)
--- testing diff sql
--- 2025.01.24.
---postgres
---password
+-- Reference: Cathy Tanimura, "SQL for Data Analysis: Advanced Techniques
+-- for Transforming Data into Insights" (O'Reilly, 2021) - tested 2025-01-24.
 
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
+-- ------------------------------------------------------------
 ----- time functions
 
 SELECT CURRENT_TIMESTAMP;
@@ -281,7 +251,7 @@ SELECT date_trunc('month',CURRENT_TIMESTAMP);
 SELECT date_part('hour',CURRENT_TIMESTAMP);
 
 SELECT CURRENT_DATE;
-select to_date('2016-03-01', 'YYYY-MM-DD') 
+select to_date('2016-03-01', 'YYYY-MM-DD');
 
 SELECT NOW();
 SELECT *, 'D' as type FROM generate_series('2025-01-01'::timestamp,'2025-12-31', '1 month');
@@ -303,17 +273,17 @@ SELECT date('2020-06-01') + interval '7 days' as new_date;
 SELECT date('2020-06-01') + 7 as new_date;
 SELECT time '05:00' - time '03:00' as time_diff;
 select date_trunc('day', CURRENT_DATE - '12 days'::interval)::date;
-select date_trunc('week', CURRENT_DATE - '16 days'::interval)::date
-select date_trunc('month', CURRENT_DATE - '0 days'::interval)::date
+select date_trunc('week', CURRENT_DATE - '16 days'::interval)::date;
+select date_trunc('month', CURRENT_DATE - '0 days'::interval)::date;
 select   DATE_TRUNC('month', '2020-01-03'::DATE )::DATE;
 SELECT age(date('2021-07-30'),date('2020-06-01')), date_part('year',age(date('2021-07-30'),date('2020-08-01')))
 ,  date_part('month',age(date('2021-07-30'),date('2020-07-01')));
-select age(current_date, '2020-01-01'::date)
+select age(current_date, '2020-01-01'::date);
 SELECT extract('year' from age(date('2021-08-30'),date('2020-07-01'))) * 12 
 + extract('month' from age(date('2021-08-30'),date('2020-07-01'))) * 1 ;
 
-select trunc(5.5)
-select floor(5.7)
+select trunc(5.5);
+select floor(5.7);
 
 with periods AS (
 
@@ -350,7 +320,7 @@ select p.*
 from periods p
 ;
 
-select generate_series('2016-03-01'::date,  '2016-03-15'::date,'1 day'::interval) as date
+select generate_series('2016-03-01'::date,  '2016-03-15'::date,'1 day'::interval) as date;
 
 
 with dimdate as (
@@ -369,61 +339,44 @@ select
 			rows between current row and 2 following) dayafternext
 from dimdate
 ;
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
+-- ------------------------------------------------------------
 -- text functions
+-- ------------------------------------------------------------
 
-sELECT      (string_to_array('pirmais otras', ' '))[1] as name
-sELECT      unnest(string_to_array('pirmais otras', ' ')) as name
+SELECT (string_to_array('pirmais otras', ' '))[1] as name;
+SELECT unnest(string_to_array('pirmais otras', ' ')) as name;
+SELECT substring('abcdc', 1, 1);
 
+-- reference: common string functions
+-- LENGTH(string)                    - length of a string
+-- SUBSTRING(string FROM s FOR n)    - extracts part of a string
+-- LEFT(string, n) / RIGHT(string,n) - first/last n characters
+-- TRIM(BOTH 'x' FROM string)        - removes leading/trailing characters
+-- REPLACE(string, old, new)         - replaces text
+-- POSITION(substring IN string)     - position of a substring
+-- UPPER(string) / LOWER(string)     - changes case
+-- CONCAT(string1, string2, ...)     - concatenates strings
+-- STRING_AGG(column, delimiter)     - aggregates rows into one string
+SELECT LENGTH('PostgreSQL');                                -- 10
+SELECT SUBSTRING('PostgreSQL' FROM 1 FOR 4);                -- 'Post'
+SELECT LEFT('PostgreSQL', 4);                               -- 'Post'
+SELECT RIGHT('PostgreSQL', 4);                               -- 'SQL'
+SELECT TRIM(BOTH 'x' FROM 'xxxHelloWorldxxx');              -- 'HelloWorld'
+SELECT REPLACE('Hello World', 'World', 'PostgreSQL');       -- 'Hello PostgreSQL'
+SELECT POSITION('SQL' IN 'PostgreSQL');                     -- 8
+SELECT UPPER('postgresql');                                 -- 'POSTGRESQL'
+SELECT LOWER('POSTGRESQL');                                 -- 'postgresql'
+SELECT CONCAT('Postgre', 'SQL');                            -- 'PostgreSQL'
+SELECT STRING_AGG(first_name, ', ') FROM xxxx;              -- 'Alice, Bob, Charlie'
 
-select substring('abcdc', 1,1)
-LENGTH(string) – Returns the length of a string.
-SELECT LENGTH('PostgreSQL');  -- 10
-
-SUBSTRING(string FROM start FOR length) – Extracts part of a string.
-SELECT SUBSTRING('PostgreSQL' FROM 1 FOR 4);  -- 'Post'
-LEFT(string, n) – Gets the first n characters.
-SELECT LEFT('PostgreSQL', 4);  -- 'Post'
-
-RIGHT(string, n) – Gets the last n characters.
-SELECT RIGHT('PostgreSQL', 4);  -- 'SQL'
-
-TRIM(BOTH 'x' FROM string) – Removes leading/trailing characters.
-SELECT TRIM(BOTH 'x' FROM 'xxxHelloWorldxxx');  -- 'HelloWorld'
-
-REPLACE(string, old, new) – Replaces text.
-SELECT REPLACE('Hello World', 'World', 'PostgreSQL');  -- 'Hello PostgreSQL'
-
-POSITION(substring IN string) – Finds position of a substring.
-SELECT POSITION('SQL' IN 'PostgreSQL');  -- 8
-
-UPPER(string) / LOWER(string) – Changes case.
-SELECT UPPER('postgresql');  -- 'POSTGRESQL'
-SELECT LOWER('POSTGRESQL');  -- 'postgresql'
-
-CONCAT(string1, string2, ...) – Concatenates multiple strings.
-SELECT CONCAT('Postgre', 'SQL');  -- 'PostgreSQL'
-
-STRING_AGG(column, delimiter) – Aggregates multiple rows into a single string.
-SELECT STRING_AGG(first_name, ', ') FROM xxxx;  
--- 'Alice, Bob, Charlie'
-
--- generate pattern
--- rpad: 3 param, 1. kodrukā, 2.garums, 3.ar ko aizpilda
--- rpad laba fja
--- 1.param =text, kuram jasasniedz kopejo garumu, kas ir 2.param, liekot klat 3.param vērtību
--- oracle analogs generate_series ir SELECT LEVEL AS series_number FROM dual CONNECT BY LEVEL <= 10;
-
+-- RPAD(text, target_length, fill) pads `text` on the right up to
+-- target_length using `fill`; handy for generating ASCII patterns.
+-- Oracle equivalent of generate_series: SELECT LEVEL AS n FROM dual CONNECT BY LEVEL <= 10;
 SELECT  (n * 2) - 1 as step, RPAD('* ', (n * 2) - 1, '* ') AS pattern
 FROM generate_series(1,5,1) as n
 ORDER BY n DESC;
 
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
-
+-- ------------------------------------------------------------
 -- prime numbers calc
 WITH numbers AS (
     SELECT generate_series(1,1000,1) AS num       
@@ -441,22 +394,4 @@ primes AS (
 SELECT STRING_AGG(cast (p.num as text), '&' ORDER BY p.num) AS result
 FROM primes p;
 
----------------------------------------------------------------------
----------------------------------------------------------------------
----------------------------------------------------------------------
--- execution order
-/*
-Table 8-1. SQL query order of evaluation
-1 FROM
-including JOINs and their ON clauses
-2 WHERE
-3 GROUP BY
-including aggregations
-4 HAVING
-5 Window functions
-6 SELECT
-7 DISTINCT
-8 UNION
-9 ORDER BY
-10 LIMIT and OFFSET
-*/
+

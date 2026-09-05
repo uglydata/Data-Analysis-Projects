@@ -59,15 +59,23 @@ File:
 
 <img width="640" alt="image" src="https://github.com/user-attachments/assets/e0ab0fe2-16ce-47a2-b5f8-f4c1ce149902" />
 
+Main dashboard: revenue vs. target, profit margin %, and productivity (gauge charts for productive time %), plus a division-level (Alfa vs. West) revenue/cost/profit trend, filterable by division, year, and month.
+
 <img width="640" alt="image" src="https://github.com/user-attachments/assets/50b42533-514d-4c13-9628-1e9559aaa152" />
+
+Alternate layout of the same metrics, adding a year-over-year profit margin comparison (2022 vs. 2023 vs. 2024) and a cost split donut - shows the same data model supporting both an at-a-glance and a drill-down layout.
 
 Monthly, non cumulative:
 
 <img width="640" alt="image" src="https://github.com/user-attachments/assets/9e0f920f-0bc6-45df-9ccf-ea98a5ccf009" />
 
+Single-division (West) monthly cost, ~0.54-0.68M/month with no clear trend - the flat, noisy pattern is the reason the cumulative view below is more useful for spotting the actual trajectory.
+
 Same chart, running total - cumulative:
 
 <img width="640" alt="image" src="https://github.com/user-attachments/assets/1ab45dc9-7349-478d-b211-43a19d83bd53" />
+
+Same West-division costs as a running total (0.57M -> 7.20M over the year) - cumulative framing turns noisy monthly costs into a clean, monotonic trend, the more useful view for an "are we on pace for the year" question.
 
 ---
 

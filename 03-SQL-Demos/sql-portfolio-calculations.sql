@@ -1,25 +1,62 @@
+-- PART 0: DATA QUALITY CHECKS
+--
+-- Run before trusting any of the calculations below. Real portfolio/price
+-- feeds routinely have duplicate rows (same ticker priced twice on the
+-- same day from a re-run import) and bad share counts (a negative or
+-- zero entry from a fat-fingered CSV edit) - both silently skew SUM()
+-- and window-function results without throwing an error.
+
+-- 1. Duplicate (portfolio, ticker, date) rows in the source table
+select portfolio, ticker, date, count(*) as row_count
+from temp_portfelis_
+group by portfolio, ticker, date
+having count(*) > 1
+order by row_count desc;
+
+-- 2. Non-positive share counts (would understate or invert portfolio value)
+select portfolio, ticker, date, shares
+from temp_portfelis_
+where shares <= 0
+order by portfolio, ticker, date;
+
+------------------------------------------------------------------------
 -- PART 1
 
 -- SQL DEMO: Comparing Multiple Approaches to Year-End Portfolio Value Calculation
-
+--
 -- GOAL: Retrieve stock portfolio value at the end of each year using different SQL techniques.
-
+--
 -- TECHNIQUES DEMONSTRATED (6 Approaches):
--- 1. Window Functions (`RANK()`, `LAST_VALUE()`)
--- 2️. Subqueries (Correlated & Non-Correlated)
--- 3️. Optimized Combinations (`DISTINCT ON`, `ROW_NUMBER()`)
-
--- PERFORMANCE COMPARISON:
--- - Some methods are **fast & efficient**, others are **simpler but slower**.
--- - Each approach highlights **key trade-offs** between speed, readability, and complexity.
-
+-- 1. Window Functions (RANK(), LAST_VALUE())
+-- 2. Subqueries (Correlated & Non-Correlated)
+-- 3. Optimized Combinations (DISTINCT ON, ROW_NUMBER())
+--
+-- APPROACH & TRADE-OFFS (plain-English takeaway from the 6 timed runs below):
+-- Correlated subqueries (Option 3, 3.26s) are the slowest - Postgres re-runs
+-- the subquery per outer row. A single windowed LAST_VALUE() over the full
+-- frame (Option 1, 1.25s) is better but still scans the whole partition
+-- for every row. RANK()/ROW_NUMBER()/DISTINCT ON approaches that only need
+-- to find "the one row per group" (Options 2, 5, 6, ~1.1-1.3s) are fastest
+-- and most scalable, because they avoid re-scanning the full window frame.
+-- Rule of thumb: if you just need one row per group, reach for RANK() or
+-- DISTINCT ON before LAST_VALUE() with an unbounded frame.
+--
+-- LIMITATIONS / WHAT I'D DO DIFFERENTLY AT SCALE:
+-- - Execution times below are single-run, single-machine timings on a small
+--   sample dataset (a handful of tickers/portfolios) - not a proper
+--   benchmark. At real data-warehouse volume I'd re-test with EXPLAIN
+--   ANALYZE across multiple runs, and check whether an index on
+--   (portfolio, ticker, date) changes the ranking between options.
+-- - Options 1-6 assume the data-quality checks above already passed; they
+--   don't defend against duplicate rows or bad share counts themselves.
+-- - At larger scale I'd materialize the year-end/month-end values into a
+--   proper fact table on a schedule, rather than recomputing them from
+--   the raw table on every query.
+--
 -- DEPENDENCY:
--- - Data processed using: 
---  🔗 `https://github.com/uglydata/Data-Analysis-Projects/blob/main/01-Stock-Portfolio-Data-Processing-Dashboards/3_stocks_portfolio_processing.sql`
--- - Results stored in: `temp_portfelis_` (PostgreSQL table)
-
-------------------------------------------------------------------------
-
+-- - Data processed using:
+--   https://github.com/uglydata/Data-Analysis-Projects/blob/main/01-Stock-Portfolio-Data-Processing-Dashboards/3_stocks_portfolio_processing.sql
+-- - Results stored in: temp_portfelis_ (PostgreSQL table)
 
 ------------------------------------------------------------------------
 -- Option 1
@@ -252,13 +289,13 @@ select
 	portfolio,
 	 date_part('year',date),
 	sum(received_dividends) as dividendsreiceived
-	, sum(sum(received_dividends)) over (partition by partition order by date_part('year',date)) as recordcount_running
+	, sum(sum(received_dividends)) over (partition by portfolio order by date_part('year',date)) as recordcount_running
 	, avg(sum(received_dividends)) over (partition by portfolio order by date_part('year',date)
 		rows between 2 preceding and current row) as dividends_avg_last_3month
 from temp_portfelis_
-	where --		and ticker = 'AAPL'
-		and portfolio like '%Home'
+	where portfolio like '%Home'
 		and  date_part('year',date)<>2025
+--		and ticker = 'AAPL'
 group by 1, 2
 order by 2
 ;
@@ -382,7 +419,7 @@ with calendar as (
     from stock_and_dividends p
     where 1=1
 )
--deduped prices
+-- deduped prices
 , stock_monthly_prices as (
     select 
       ticker

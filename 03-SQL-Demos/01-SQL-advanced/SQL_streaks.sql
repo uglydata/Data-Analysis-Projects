@@ -1,12 +1,12 @@
---2025.04.30. v1
-/*
-    Streaks in SQL
-	Streaks are sequences of consecutive rows that meet a certain condition.
-	For example, you might want to find players who scored more than 20 points in consecutive seasons.
-*/
+-- 2025.04.30. v1
+-- ============================================================
+-- Problem: detect streaks - runs of consecutive rows meeting a
+-- condition. Same pattern used for consecutive-login streaks,
+-- attendance tracking, or missed-payment runs, not just sports
+-- stats.
+-- ============================================================
 
 /*
-
 General Algorithm Steps for Streak Calculation
 1. Base CTE:
 	Select necessary columns.
@@ -31,51 +31,28 @@ General Algorithm Steps for Streak Calculation
 
 
 */
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
--- execution order
-/*
-Table 8-1. SQL query order of evaluation
-1 FROM
-including JOINs and their ON clauses
-2 WHERE
-3 GROUP BY
-including aggregations
-4 HAVING
-5 Window functions
-6 SELECT
-7 DISTINCT
-8 UNION
-9 ORDER BY
-10 LIMIT and OFFSET
-*/
-
 -- misc sql training 24.03.2025.
--- calc streaks
--- query nba players with at least 10 seasons with 20pts+
 -- NBA Players - Streaks of 20+ Points per Season
+-- goal: players with at least 10 seasons scoring 20+ points
 
 -- option 1
-with lagged as (select 
+with lagged as (select
 	player_name
 	, pts
 	, season
 	, lag(pts) over (partition by player_name order by season) prev_season_points
-from player_seasons 
+from player_seasons
 )
-, streaked as (select 
+, streaked as (select
 	player_name
 	, season
 	, pts
 	, prev_season_points
 	, case when pts>20 and prev_season_points>20 then 0 else 1 end as streak_break
 from lagged
-where 1=1
---	and lower(player_name) like '%harden%'
 )
 , streaks as (
-select 
+select
 	player_name
 	, season
 	, pts
@@ -83,102 +60,86 @@ select
 	, streak_break
 	, sum(case when streak_break=1 then 1 else 0 end) over (partition by player_name order by season) as streakid
 	, sum(streak_break) over (partition by player_name order by season) as streak_id
-from streaked	
-where 1=1
-	
+from streaked
 	)
-select 
+select
 	player_name
 	, max(pts), min(pts), max(season), min(season), max(season) - min(season) + 1 as numb_of_seasons
 from streaks
-where 1=1
---	and lower(player_name) like '%harden%'
-group by player_name, streakid	
--- zach wilson approach:
---having max(pts)>20	and  max(season) - min(season) + 1 > 10
--- or simpler imho
+group by player_name, streakid
+-- alt approach: having max(pts)>20 and max(season) - min(season) + 1 > 10
+-- simpler:
 having count(season)>10
-order by 1	
+order by 1
 ;
 
 -- option 2
-with lagged as (select 
+with lagged as (select
 	player_name
 	, pts
 	, season
 	, case when pts>20 and lag(pts) over (partition by player_name order by season)>20 then 0 else 1 end as streak_br
-from player_seasons 
+from player_seasons
 )
-, streaked as (select 
+, streaked as (select
 	player_name
 	, season
 	, pts
 	, streak_br
 	, sum(case when streak_br=0 then 1 else 0 end) over (partition by player_name order by season rows between 9 preceding and current row) as last10
 from lagged
-where 1=1
 )
-select 
+select
 	player_name, max(pts), min(pts), max(season), min(season), max(season) - min(season) + 1 as numb_of_seasons
 from streaked
-	where 1=1
-	and last10>=10
---	and lower(player_name) like '%harden%'
+	where last10>=10
 group by player_name
 order by 1
 ;
 
 
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+-- ------------------------------------------------------------
 -- NBA Players - 2nd Highest Points in Season, 3-Year Streak
--- give me the player who got the 2nd highest pts in every season for at least 3 seasons in row
+-- goal: player who was 2nd-highest scorer for 3+ consecutive seasons
+-- ------------------------------------------------------------
 with ranked as (
-	select 	
+	select
 		player_name
 		, pts
 		, season
 		, rank() over (partition by season order by pts desc) ranked
-	from player_seasons 	
+	from player_seasons
 )
 , rank2d as (
 select * from ranked
-where 1=1 
-and ranked=2
+where ranked=2
 )
 , rrr as (
-select 
+select
 	*
 	, lag(player_name, 1) over (order by season) as prev2nd
 	, lag(player_name, 2) over (order by season) as prev3rdd
 from rank2d
 )
 , results as (
-select player_name, min(season), max(season) 
+select player_name, min(season), max(season)
 from rrr
-where 1=1
-	and player_name=prev2nd and player_name=prev3rdd
---	and lower(player_name) like '%harden%'
+where player_name=prev2nd and player_name=prev3rdd
 group by 1
---order by season
 )
-select * 
-from results 
---order by season
+select *
+from results
+;
 
-
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
+-- ============================================================
 -- Stadium Visits - Streaks of High Attendance (People > 100)
+-- ============================================================
 
 -- Create table
 CREATE TABLE stadium (
     id INT PRIMARY KEY,
     visit_date DATE,
     people INT)
-delete from stadium where 1=1
 -- Insert rows
 INSERT INTO stadium (id, visit_date, people) VALUES
 (1, '2017-01-01', 10),
@@ -213,7 +174,6 @@ with aaa as (
             or (s1.people<100 and lag(s1.people,1) over (order by s1.id) is null) 
             then 1 else 0 end as isvalidid        
     from stadium s1
-    where 1=1
 )
 , streaks as (
     select 
@@ -231,8 +191,6 @@ from streaks
 select 
     id, visit_date, people , streakid, strc
 from streakscount
-where 1=1
---    and strc >2
 order by id asc
 ;
 
@@ -275,8 +233,6 @@ SELECT
     people
 	, streak_id, streak_length
 FROM streak_counts
-WHERE 1=1
-	--and streak_length >= 3
 ORDER BY id;
 
 -- option 3: rowid
@@ -287,13 +243,11 @@ ORDER BY id;
         , row_number() OVER (ORDER BY id) AS rn
 		, id - row_number() OVER (ORDER BY id) as delta
     FROM stadium
-	where 1=1
-		and people>100)
+	where people>100)
 select a.* from (select *
 	, count(id) over (partition by delta) as n
 from 	base ) as a
-where 1=1
-	and a.n>2
+where a.n>2
 order by id
 ;
 
@@ -305,8 +259,7 @@ order by id
         , row_number() OVER (ORDER BY id) AS rn
 		, id - row_number() OVER (ORDER BY id) as delta
     FROM stadium
-	where 1=1
-		and people>100)
+	where people>100)
 select * 
 from base where delta in (select delta from 	base group by delta having count(delta)>2) 
 order by id
