@@ -1,5 +1,6 @@
 # Data-Analysis-Projects
 [![SQL tests](https://github.com/uglydata/Data-Analysis-Projects/actions/workflows/sql-tests.yml/badge.svg)](https://github.com/uglydata/Data-Analysis-Projects/actions/workflows/sql-tests.yml)
+[![Python tests](https://github.com/uglydata/Data-Analysis-Projects/actions/workflows/python-tests.yml/badge.svg)](https://github.com/uglydata/Data-Analysis-Projects/actions/workflows/python-tests.yml)
 
 A collection of demo projects showcasing end-to-end data analysis workflows, including data retrieval, processing, cleaning, shaping, and visualization.
 
@@ -77,6 +78,11 @@ Automation scripts for issue-tracker data exchange via REST API: CSV import/expo
 [05-Database-Migration-Demo](https://github.com/uglydata/Data-Analysis-Projects/tree/main/05-Database-Migration-Demo)
 
 Generalizes a MySQL/MariaDB and SQL Server -> Oracle migration pattern built from real professional experience (schema discovery via `INFORMATION_SCHEMA`, type mapping, batched transfer, idempotent skip-if-exists, per-table error isolation, row-count verification). All identifying specifics are removed or replaced with dynamic discovery.
+
+## 06-Latvia Real Wages
+[06-Latvia-Real-Wages](https://github.com/uglydata/Data-Analysis-Projects/tree/main/06-Latvia-Real-Wages)
+
+Which industries' pay grew faster than prices in Latvia, 2015-2025. Pulls official statistics live from the Central Statistical Bureau of Latvia API (wages by industry, CPI), computes inflation-adjusted wage indices for every NACE section, and validates the method against CSP's own published real-wage series (max difference 0.2 percentage points). Standard library only; SVG chart and CSV results committed; offline unit tests run in CI. Data: CSP, CC BY 4.0.
 
 ## 99-Delivery Management
 [99-Delivery-Management](https://github.com/uglydata/Data-Analysis-Projects/tree/main/99-Delivery-Management)

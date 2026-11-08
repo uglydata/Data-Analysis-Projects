@@ -1,0 +1,232 @@
+nace,industry,year,nominal_gross_eur,cpi_2015_100,real_gross_2015_eur,real_index_2015_100
+TOTAL,TOTAL,2015,818,100.0,818.0,100.0
+TOTAL,TOTAL,2016,859,100.1,858.1,104.9
+TOTAL,TOTAL,2017,926,103.1,898.2,109.8
+TOTAL,TOTAL,2018,1004,105.7,949.9,116.1
+TOTAL,TOTAL,2019,1076,108.7,989.9,121.0
+TOTAL,TOTAL,2020,1143,108.9,1049.6,128.3
+TOTAL,TOTAL,2021,1277,112.5,1135.1,138.8
+TOTAL,TOTAL,2022,1373,131.9,1040.9,127.3
+TOTAL,TOTAL,2023,1537,143.7,1069.6,130.8
+TOTAL,TOTAL,2024,1685,145.5,1158.1,141.6
+TOTAL,TOTAL,2025,1815,151.0,1202.0,146.9
+A,"Agriculture, forestry and fishing",2015,769,100.0,769.0,100.0
+A,"Agriculture, forestry and fishing",2016,820,100.1,819.2,106.5
+A,"Agriculture, forestry and fishing",2017,892,103.1,865.2,112.5
+A,"Agriculture, forestry and fishing",2018,982,105.7,929.0,120.8
+A,"Agriculture, forestry and fishing",2019,1035,108.7,952.2,123.8
+A,"Agriculture, forestry and fishing",2020,1082,108.9,993.6,129.2
+A,"Agriculture, forestry and fishing",2021,1177,112.5,1046.2,136.0
+A,"Agriculture, forestry and fishing",2022,1307,131.9,990.9,128.9
+A,"Agriculture, forestry and fishing",2023,1545,143.7,1075.2,139.8
+A,"Agriculture, forestry and fishing",2024,1632,145.5,1121.6,145.9
+A,"Agriculture, forestry and fishing",2025,1761,151.0,1166.2,151.7
+B,Mining and quarrying,2015,911,100.0,911.0,100.0
+B,Mining and quarrying,2016,971,100.1,970.0,106.5
+B,Mining and quarrying,2017,1061,103.1,1029.1,113.0
+B,Mining and quarrying,2018,1167,105.7,1104.1,121.2
+B,Mining and quarrying,2019,1175,108.7,1081.0,118.7
+B,Mining and quarrying,2020,1289,108.9,1183.7,129.9
+B,Mining and quarrying,2021,1350,112.5,1200.0,131.7
+B,Mining and quarrying,2022,1490,131.9,1129.6,124.0
+B,Mining and quarrying,2023,1703,143.7,1185.1,130.1
+B,Mining and quarrying,2024,1877,145.5,1290.0,141.6
+B,Mining and quarrying,2025,2009,151.0,1330.5,146.0
+C,Manufacturing,2015,765,100.0,765.0,100.0
+C,Manufacturing,2016,811,100.1,810.2,105.9
+C,Manufacturing,2017,878,103.1,851.6,111.3
+C,Manufacturing,2018,963,105.7,911.1,119.1
+C,Manufacturing,2019,1040,108.7,956.8,125.1
+C,Manufacturing,2020,1109,108.9,1018.4,133.1
+C,Manufacturing,2021,1201,112.5,1067.6,139.5
+C,Manufacturing,2022,1309,131.9,992.4,129.7
+C,Manufacturing,2023,1460,143.7,1016.0,132.8
+C,Manufacturing,2024,1573,145.5,1081.1,141.3
+C,Manufacturing,2025,1690,151.0,1119.2,146.3
+D,"Electricity, gas, steam and air conditioning supply",2015,1116,100.0,1116.0,100.0
+D,"Electricity, gas, steam and air conditioning supply",2016,1163,100.1,1161.8,104.1
+D,"Electricity, gas, steam and air conditioning supply",2017,1209,103.1,1172.6,105.1
+D,"Electricity, gas, steam and air conditioning supply",2018,1276,105.7,1207.2,108.2
+D,"Electricity, gas, steam and air conditioning supply",2019,1366,108.7,1256.7,112.6
+D,"Electricity, gas, steam and air conditioning supply",2020,1413,108.9,1297.5,116.3
+D,"Electricity, gas, steam and air conditioning supply",2021,1526,112.5,1356.4,121.5
+D,"Electricity, gas, steam and air conditioning supply",2022,1678,131.9,1272.2,114.0
+D,"Electricity, gas, steam and air conditioning supply",2023,1972,143.7,1372.3,123.0
+D,"Electricity, gas, steam and air conditioning supply",2024,2122,145.5,1458.4,130.7
+D,"Electricity, gas, steam and air conditioning supply",2025,2313,151.0,1531.8,137.3
+E,"Water supply, sewerage, waste management and remediation activities",2015,789,100.0,789.0,100.0
+E,"Water supply, sewerage, waste management and remediation activities",2016,842,100.1,841.2,106.6
+E,"Water supply, sewerage, waste management and remediation activities",2017,902,103.1,874.9,110.9
+E,"Water supply, sewerage, waste management and remediation activities",2018,977,105.7,924.3,117.2
+E,"Water supply, sewerage, waste management and remediation activities",2019,1067,108.7,981.6,124.4
+E,"Water supply, sewerage, waste management and remediation activities",2020,1137,108.9,1044.1,132.3
+E,"Water supply, sewerage, waste management and remediation activities",2021,1180,112.5,1048.9,132.9
+E,"Water supply, sewerage, waste management and remediation activities",2022,1335,131.9,1012.1,128.3
+E,"Water supply, sewerage, waste management and remediation activities",2023,1519,143.7,1057.1,134.0
+E,"Water supply, sewerage, waste management and remediation activities",2024,1687,145.5,1159.5,147.0
+E,"Water supply, sewerage, waste management and remediation activities",2025,1839,151.0,1217.9,154.4
+F,Construction,2015,788,100.0,788.0,100.0
+F,Construction,2016,828,100.1,827.2,105.0
+F,Construction,2017,881,103.1,854.5,108.4
+F,Construction,2018,950,105.7,898.8,114.1
+F,Construction,2019,1048,108.7,964.1,122.4
+F,Construction,2020,1130,108.9,1037.6,131.7
+F,Construction,2021,1249,112.5,1110.2,140.9
+F,Construction,2022,1313,131.9,995.5,126.3
+F,Construction,2023,1449,143.7,1008.4,128.0
+F,Construction,2024,1577,145.5,1083.8,137.5
+F,Construction,2025,1719,151.0,1138.4,144.5
+G,"Wholesale and retail trade, repair of motor vehicles and motorcycles",2015,727,100.0,727.0,100.0
+G,"Wholesale and retail trade, repair of motor vehicles and motorcycles",2016,769,100.1,768.2,105.7
+G,"Wholesale and retail trade, repair of motor vehicles and motorcycles",2017,842,103.1,816.7,112.3
+G,"Wholesale and retail trade, repair of motor vehicles and motorcycles",2018,909,105.7,860.0,118.3
+G,"Wholesale and retail trade, repair of motor vehicles and motorcycles",2019,953,108.7,876.7,120.6
+G,"Wholesale and retail trade, repair of motor vehicles and motorcycles",2020,999,108.9,917.4,126.2
+G,"Wholesale and retail trade, repair of motor vehicles and motorcycles",2021,1126,112.5,1000.9,137.7
+G,"Wholesale and retail trade, repair of motor vehicles and motorcycles",2022,1209,131.9,916.6,126.1
+G,"Wholesale and retail trade, repair of motor vehicles and motorcycles",2023,1365,143.7,949.9,130.7
+G,"Wholesale and retail trade, repair of motor vehicles and motorcycles",2024,1494,145.5,1026.8,141.2
+G,"Wholesale and retail trade, repair of motor vehicles and motorcycles",2025,1591,151.0,1053.6,144.9
+H,Transportation and storage,2015,858,100.0,858.0,100.0
+H,Transportation and storage,2016,870,100.1,869.1,101.3
+H,Transportation and storage,2017,918,103.1,890.4,103.8
+H,Transportation and storage,2018,1000,105.7,946.1,110.3
+H,Transportation and storage,2019,1071,108.7,985.3,114.8
+H,Transportation and storage,2020,1068,108.9,980.7,114.3
+H,Transportation and storage,2021,1152,112.5,1024.0,119.3
+H,Transportation and storage,2022,1278,131.9,968.9,112.9
+H,Transportation and storage,2023,1477,143.7,1027.8,119.8
+H,Transportation and storage,2024,1637,145.5,1125.1,131.1
+H,Transportation and storage,2025,1773,151.0,1174.2,136.8
+I,Accommodation and food service activities,2015,545,100.0,545.0,100.0
+I,Accommodation and food service activities,2016,584,100.1,583.4,107.0
+I,Accommodation and food service activities,2017,634,103.1,614.9,112.8
+I,Accommodation and food service activities,2018,709,105.7,670.8,123.1
+I,Accommodation and food service activities,2019,767,108.7,705.6,129.5
+I,Accommodation and food service activities,2020,726,108.9,666.7,122.3
+I,Accommodation and food service activities,2021,795,112.5,706.7,129.7
+I,Accommodation and food service activities,2022,889,131.9,674.0,123.7
+I,Accommodation and food service activities,2023,993,143.7,691.0,126.8
+I,Accommodation and food service activities,2024,1107,145.5,760.8,139.6
+I,Accommodation and food service activities,2025,1190,151.0,788.1,144.6
+J,Information and communication,2015,1316,100.0,1316.0,100.0
+J,Information and communication,2016,1364,100.1,1362.6,103.5
+J,Information and communication,2017,1477,103.1,1432.6,108.9
+J,Information and communication,2018,1592,105.7,1506.1,114.4
+J,Information and communication,2019,1731,108.7,1592.5,121.0
+J,Information and communication,2020,1866,108.9,1713.5,130.2
+J,Information and communication,2021,2088,112.5,1856.0,141.0
+J,Information and communication,2022,2287,131.9,1733.9,131.8
+J,Information and communication,2023,2549,143.7,1773.8,134.8
+J,Information and communication,2024,2733,145.5,1878.4,142.7
+J,Information and communication,2025,2861,151.0,1894.7,144.0
+J62,"Computer programming, consultancy and related activities",2015,1444,100.0,1444.0,100.0
+J62,"Computer programming, consultancy and related activities",2016,1556,100.1,1554.4,107.6
+J62,"Computer programming, consultancy and related activities",2017,1703,103.1,1651.8,114.4
+J62,"Computer programming, consultancy and related activities",2018,1891,105.7,1789.0,123.9
+J62,"Computer programming, consultancy and related activities",2019,2021,108.7,1859.2,128.8
+J62,"Computer programming, consultancy and related activities",2020,2174,108.9,1996.3,138.2
+J62,"Computer programming, consultancy and related activities",2021,2489,112.5,2212.4,153.2
+J62,"Computer programming, consultancy and related activities",2022,2648,131.9,2007.6,139.0
+J62,"Computer programming, consultancy and related activities",2023,2997,143.7,2085.6,144.4
+J62,"Computer programming, consultancy and related activities",2024,3205,145.5,2202.7,152.5
+J62,"Computer programming, consultancy and related activities",2025,3297,151.0,2183.4,151.2
+K,Financial and insurance activities,2015,1745,100.0,1745.0,100.0
+K,Financial and insurance activities,2016,1819,100.1,1817.2,104.1
+K,Financial and insurance activities,2017,1921,103.1,1863.2,106.8
+K,Financial and insurance activities,2018,1991,105.7,1883.6,107.9
+K,Financial and insurance activities,2019,2083,108.7,1916.3,109.8
+K,Financial and insurance activities,2020,2161,108.9,1984.4,113.7
+K,Financial and insurance activities,2021,2282,112.5,2028.4,116.2
+K,Financial and insurance activities,2022,2437,131.9,1847.6,105.9
+K,Financial and insurance activities,2023,2678,143.7,1863.6,106.8
+K,Financial and insurance activities,2024,2851,145.5,1959.5,112.3
+K,Financial and insurance activities,2025,3077,151.0,2037.7,116.8
+L,Real estate activities,2015,743,100.0,743.0,100.0
+L,Real estate activities,2016,775,100.1,774.2,104.2
+L,Real estate activities,2017,785,103.1,761.4,102.5
+L,Real estate activities,2018,848,105.7,802.3,108.0
+L,Real estate activities,2019,920,108.7,846.4,113.9
+L,Real estate activities,2020,953,108.9,875.1,117.8
+L,Real estate activities,2021,1046,112.5,929.8,125.1
+L,Real estate activities,2022,1112,131.9,843.1,113.5
+L,Real estate activities,2023,1247,143.7,867.8,116.8
+L,Real estate activities,2024,1395,145.5,958.8,129.0
+L,Real estate activities,2025,1594,151.0,1055.6,142.1
+M,"Professional, scientific and technical activities",2015,936,100.0,936.0,100.0
+M,"Professional, scientific and technical activities",2016,937,100.1,936.1,100.0
+M,"Professional, scientific and technical activities",2017,1048,103.1,1016.5,108.6
+M,"Professional, scientific and technical activities",2018,1109,105.7,1049.2,112.1
+M,"Professional, scientific and technical activities",2019,1217,108.7,1119.6,119.6
+M,"Professional, scientific and technical activities",2020,1353,108.9,1242.4,132.7
+M,"Professional, scientific and technical activities",2021,1598,112.5,1420.4,151.8
+M,"Professional, scientific and technical activities",2022,1766,131.9,1338.9,143.0
+M,"Professional, scientific and technical activities",2023,1969,143.7,1370.2,146.4
+M,"Professional, scientific and technical activities",2024,2124,145.5,1459.8,156.0
+M,"Professional, scientific and technical activities",2025,2319,151.0,1535.8,164.1
+N,Administrative and support service activities,2015,727,100.0,727.0,100.0
+N,Administrative and support service activities,2016,780,100.1,779.2,107.2
+N,Administrative and support service activities,2017,821,103.1,796.3,109.5
+N,Administrative and support service activities,2018,879,105.7,831.6,114.4
+N,Administrative and support service activities,2019,974,108.7,896.0,123.3
+N,Administrative and support service activities,2020,1037,108.9,952.2,131.0
+N,Administrative and support service activities,2021,1126,112.5,1000.9,137.7
+N,Administrative and support service activities,2022,1228,131.9,931.0,128.1
+N,Administrative and support service activities,2023,1310,143.7,911.6,125.4
+N,Administrative and support service activities,2024,1497,145.5,1028.9,141.5
+N,Administrative and support service activities,2025,1641,151.0,1086.8,149.5
+O,"Public administration and defence, compulsory social security",2015,1007,100.0,1007.0,100.0
+O,"Public administration and defence, compulsory social security",2016,1071,100.1,1069.9,106.2
+O,"Public administration and defence, compulsory social security",2017,1155,103.1,1120.3,111.2
+O,"Public administration and defence, compulsory social security",2018,1240,105.7,1173.1,116.5
+O,"Public administration and defence, compulsory social security",2019,1311,108.7,1206.1,119.8
+O,"Public administration and defence, compulsory social security",2020,1371,108.9,1259.0,125.0
+O,"Public administration and defence, compulsory social security",2021,1467,112.5,1304.0,129.5
+O,"Public administration and defence, compulsory social security",2022,1574,131.9,1193.3,118.5
+O,"Public administration and defence, compulsory social security",2023,1810,143.7,1259.6,125.1
+O,"Public administration and defence, compulsory social security",2024,1975,145.5,1357.4,134.8
+O,"Public administration and defence, compulsory social security",2025,2103,151.0,1392.7,138.3
+P,Education,2015,677,100.0,677.0,100.0
+P,Education,2016,703,100.1,702.3,103.7
+P,Education,2017,775,103.1,751.7,111.0
+P,Education,2018,823,105.7,778.6,115.0
+P,Education,2019,866,108.7,796.7,117.7
+P,Education,2020,913,108.9,838.4,123.8
+P,Education,2021,1012,112.5,899.6,132.9
+P,Education,2022,1086,131.9,823.4,121.6
+P,Education,2023,1247,143.7,867.8,128.2
+P,Education,2024,1458,145.5,1002.1,148.0
+P,Education,2025,1593,151.0,1055.0,155.8
+Q,Human health and social work activities,2015,762,100.0,762.0,100.0
+Q,Human health and social work activities,2016,799,100.1,798.2,104.8
+Q,Human health and social work activities,2017,842,103.1,816.7,107.2
+Q,Human health and social work activities,2018,976,105.7,923.4,121.2
+Q,Human health and social work activities,2019,1105,108.7,1016.6,133.4
+Q,Human health and social work activities,2020,1211,108.9,1112.0,145.9
+Q,Human health and social work activities,2021,1553,112.5,1380.4,181.2
+Q,Human health and social work activities,2022,1592,131.9,1207.0,158.4
+Q,Human health and social work activities,2023,1654,143.7,1151.0,151.1
+Q,Human health and social work activities,2024,1758,145.5,1208.2,158.6
+Q,Human health and social work activities,2025,1841,151.0,1219.2,160.0
+R,"Arts, entertainment and recreation",2015,712,100.0,712.0,100.0
+R,"Arts, entertainment and recreation",2016,734,100.1,733.3,103.0
+R,"Arts, entertainment and recreation",2017,792,103.1,768.2,107.9
+R,"Arts, entertainment and recreation",2018,854,105.7,807.9,113.5
+R,"Arts, entertainment and recreation",2019,895,108.7,823.4,115.6
+R,"Arts, entertainment and recreation",2020,931,108.9,854.9,120.1
+R,"Arts, entertainment and recreation",2021,1060,112.5,942.2,132.3
+R,"Arts, entertainment and recreation",2022,1167,131.9,884.8,124.3
+R,"Arts, entertainment and recreation",2023,1286,143.7,894.9,125.7
+R,"Arts, entertainment and recreation",2024,1433,145.5,984.9,138.3
+R,"Arts, entertainment and recreation",2025,1511,151.0,1000.7,140.5
+S,Other service activities,2015,654,100.0,654.0,100.0
+S,Other service activities,2016,710,100.1,709.3,108.5
+S,Other service activities,2017,735,103.1,712.9,109.0
+S,Other service activities,2018,815,105.7,771.1,117.9
+S,Other service activities,2019,819,108.7,753.4,115.2
+S,Other service activities,2020,935,108.9,858.6,131.3
+S,Other service activities,2021,1060,112.5,942.2,144.1
+S,Other service activities,2022,1112,131.9,843.1,128.9
+S,Other service activities,2023,1247,143.7,867.8,132.7
+S,Other service activities,2024,1418,145.5,974.6,149.0
+S,Other service activities,2025,1687,151.0,1117.2,170.8
